@@ -15,7 +15,7 @@
             {
                 Console.Clear();
                 Console.WriteLine("===================================================");
-                Console.WriteLine("|               Carrinho de Compras                ");
+                Console.WriteLine("|               Carrinho de compras                ");
                 Console.WriteLine("===================================================");
                 Console.WriteLine($"| Produtos: {productiesManagement.Length()}");
                 Console.WriteLine("|--------------------------------------------------");
@@ -76,6 +76,11 @@
                 }
 
                 success = productiesManagement.RemoveProduct(index - 1);
+
+                if (productiesManagement.Length() == 0)
+                {
+                    break;
+                }
 
                 if (success)
                 {
