@@ -34,10 +34,10 @@
         {
             Console.Clear();
             Console.WriteLine("===================================================");
-            Console.WriteLine("|                Adicionar ao Carrinho             ");
+            Console.WriteLine("|                Adicionar ao carrinho             ");
             Console.WriteLine("===================================================");
-            string productName = ReadString("| Nome do Produto: ");
-            int qtd = ReadInterger("| Quantidade: ");
+            string productName = ReadString("Nome do Produto: ");
+            int qtd = ReadInterger("Quantidade: ");
             double price = ReadPrice();
 
             Product product = new Product(productName, qtd, price);
@@ -47,10 +47,51 @@
 
         void RemoveProduct()
         {
-            Console.Clear();
-            Console.WriteLine("===================================================");
-            Console.WriteLine("|                Adicionar ao Carrinho             ");
-            Console.WriteLine("===================================================");
+            bool success = true;
+
+            while (true)
+            {
+                Console.Clear();
+                Console.WriteLine("===================================================");
+                Console.WriteLine("|             Remover item do carrinho             ");
+                Console.WriteLine("===================================================");
+
+                if (productiesManagement.Length() == 0)
+                {
+                    break;
+                }
+
+                productiesManagement.DisplayProducties(true);
+                
+                if (!success)
+                {
+                    Console.WriteLine("| Digite um valor valido!");
+                }
+                Console.WriteLine("| Digite o index do item que você quer remover.");
+                int index = ReadInterger("index ou (-1 para sair): ");
+
+                if (index < 0)
+                {
+                    break;
+                }
+
+                success = productiesManagement.RemoveProduct(index - 1);
+
+                if (success)
+                {
+                    Console.Clear();
+
+                    productiesManagement.DisplayProducties(true);
+
+                    string option = ReadString("Remover outro item (S/N): ");
+
+                    if (option.ToLower() == "n")
+                    {
+                        break;
+                    }
+                }
+
+            }
         }
 
         static int ReadInterger(string msg)
@@ -128,6 +169,14 @@
             {
                 case 1:
                     AddProduct();
+                    return;
+                case 2:
+                    if (productiesManagement.Length() == 0)
+                    {
+                        return;
+                    }
+
+                    RemoveProduct();
                     return;
                 case 3:
                     productiesManagement.DisplayProducties(false);

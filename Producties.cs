@@ -15,7 +15,14 @@ namespace Programm
 
         public bool RemoveProduct(int index)
         {
-            return producties.Remove(producties[index]);
+            try
+            {
+                producties.Remove(producties[index]);
+                return true;
+            } catch
+            {
+                return false;
+            }
         }
 
         public void DisplayProducties(bool simplified)
@@ -35,13 +42,13 @@ namespace Programm
                 Console.WriteLine($"| Nome: {producties[i].name}");
                 Console.WriteLine($"| Quatidade: {producties[i].qtd}");
                 Console.WriteLine($"| Preço: R${producties[i].price.ToString("F2")}");
-                Console.WriteLine($"| Preço Total: R${producties[i].GetTotal()}");
+                Console.WriteLine($"| Preço Total: R${producties[i].GetTotal().ToString("F2")}");
 
             }
 
-            if (!simplified) { 
-                Console.WriteLine("|--------------------------------------------------");
-                Console.WriteLine($"| Valor Total: {TotalPrice().ToString("F2")}");
+            if (!simplified) {
+                Console.WriteLine("===================================================");
+                Console.WriteLine($"| Valor Total: R${TotalPrice().ToString("F2")}");
                 Console.WriteLine("===================================================");
                 Console.WriteLine("| Aperte qualquer botão para voltar");
                 Console.ReadLine();
