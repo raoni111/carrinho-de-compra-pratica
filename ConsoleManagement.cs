@@ -2,11 +2,11 @@
 {
     class ConsoleManagement
     {
-        public ProductiesManagement productiesManagement;        
+        public ProductiesManagement ProductiesManagement;        
 
         public ConsoleManagement(ProductiesManagement productiesManagement)
         {
-            this.productiesManagement = productiesManagement;
+            ProductiesManagement = productiesManagement;
         }
 
         public void InitProgramm()
@@ -17,7 +17,7 @@
                 Console.WriteLine("===================================================");
                 Console.WriteLine("|               Carrinho de compras                ");
                 Console.WriteLine("===================================================");
-                Console.WriteLine($"| Produtos: {productiesManagement.Length()}");
+                Console.WriteLine($"| Produtos: {ProductiesManagement.Length()}");
                 Console.WriteLine("|--------------------------------------------------");
                 Console.WriteLine("| Opções:                                          ");
                 Console.WriteLine("| [1] Adicionar Produto                            ");
@@ -42,7 +42,7 @@
 
             Product product = new Product(productName, qtd, price);
 
-            productiesManagement.AddProduct(product);
+            ProductiesManagement.AddProduct(product);
         }
 
         void RemoveProduct()
@@ -56,12 +56,12 @@
                 Console.WriteLine("|             Remover item do carrinho             ");
                 Console.WriteLine("===================================================");
 
-                if (productiesManagement.Length() == 0)
+                if (ProductiesManagement.Length() == 0)
                 {
                     break;
                 }
 
-                productiesManagement.DisplayProducties(true);
+                ProductiesManagement.DisplayProducties(true);
                 
                 if (!success)
                 {
@@ -75,9 +75,9 @@
                     break;
                 }
 
-                success = productiesManagement.RemoveProduct(index - 1);
+                success = ProductiesManagement.RemoveProduct(index - 1);
 
-                if (productiesManagement.Length() == 0)
+                if (ProductiesManagement.Length() == 0)
                 {
                     break;
                 }
@@ -86,7 +86,7 @@
                 {
                     Console.Clear();
 
-                    productiesManagement.DisplayProducties(true);
+                    ProductiesManagement.DisplayProducties(true);
 
                     string option = ReadString("Remover outro item (S/N): ");
 
@@ -176,7 +176,7 @@
                     AddProduct();
                     return;
                 case 2:
-                    if (productiesManagement.Length() == 0)
+                    if (ProductiesManagement.Length() == 0)
                     {
                         return;
                     }
@@ -184,7 +184,7 @@
                     RemoveProduct();
                     return;
                 case 3:
-                    productiesManagement.DisplayProducties(false);
+                    ProductiesManagement.DisplayProducties(false);
                     return;
                 default:
                     return;

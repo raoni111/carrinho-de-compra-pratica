@@ -39,9 +39,9 @@ namespace Programm
                     Console.WriteLine("|--------------------------------------------------");
                 }
                 Console.WriteLine($"| Produto: {i + 1}");
-                Console.WriteLine($"| Nome: {producties[i].name}");
-                Console.WriteLine($"| Quatidade: {producties[i].qtd}");
-                Console.WriteLine($"| Preço: R${producties[i].price.ToString("F2")}");
+                Console.WriteLine($"| Nome: {producties[i].Name}");
+                Console.WriteLine($"| Quatidade: {producties[i].Qtd}");
+                Console.WriteLine($"| Preço: R${producties[i].Price.ToString("F2")}");
                 Console.WriteLine($"| Preço Total: R${producties[i].GetTotal().ToString("F2")}");
 
             }
@@ -50,7 +50,7 @@ namespace Programm
                 Console.WriteLine("===================================================");
                 Console.WriteLine($"| Valor Total: R${TotalPrice().ToString("F2")}");
                 Console.WriteLine("===================================================");
-                Console.WriteLine("| Aperte qualquer botão para voltar");
+                Console.WriteLine("| Aperte enter para voltar.");
                 Console.ReadLine();
             } else
             {

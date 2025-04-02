@@ -2,27 +2,27 @@
 {
     class Product
     {
-        public string name;
-        public double price;
-        public int qtd = 0;
+        public string Name;
+        public double Price;
+        public int Qtd = 0;
 
         public Product(string name, int qtd, double price)
         {
-            this.name = name;
-            this.qtd = qtd;
-            this.price = price;
+            Name = name;
+            Qtd = qtd;
+            Price = price;
         }
 
         public void DisplayProductInfo()
         {
-            Console.WriteLine($"Produto: {name}");
-            Console.WriteLine($"Quantidade: {qtd}");
-            Console.WriteLine($"Preço: {price}");
+            Console.WriteLine($"Produto: {Name}");
+            Console.WriteLine($"Quantidade: {Qtd}");
+            Console.WriteLine($"Preço: {Price}");
         }
 
         public double GetTotal()
         {
-            return price * qtd;
+            return Price * Qtd;
         }
     }
 }
