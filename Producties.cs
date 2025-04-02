@@ -4,20 +4,44 @@ namespace Programm
 {
     class ProductiesManagement
     {
-        List<Product> producties = new List<Product>();
+        private List<Product> Producties = new List<Product>();
+
+        public double Total
+        {
+            get
+            {
+                double total = 0;
+
+                for (int i = 0; i < Producties.Count(); i++)
+                {
+                    total += Producties[i].Total;
+                }
+
+                return total;
+            }
+        }
+
+        public int Length
+        {
+            get
+            {
+                return Producties.Count();
+            }
+        }
+
 
         public List<Product> AddProduct(Product product)
         {
-            producties.Add(product);
+            Producties.Add(product);
 
-            return producties;
+            return Producties;
         }
 
         public bool RemoveProduct(int index)
         {
             try
             {
-                producties.Remove(producties[index]);
+                Producties.Remove(Producties[index]);
                 return true;
             } catch
             {
@@ -32,23 +56,23 @@ namespace Programm
             Console.WriteLine("|                    Produtos                      ");
             Console.WriteLine("===================================================");
 
-            for (int i = 0; i < producties.Count(); i++)
+            for (int i = 0; i < Producties.Count(); i++)
             {
                 if (i != 0)
                 {
                     Console.WriteLine("|--------------------------------------------------");
                 }
                 Console.WriteLine($"| Produto: {i + 1}");
-                Console.WriteLine($"| Nome: {producties[i].Name}");
-                Console.WriteLine($"| Quatidade: {producties[i].Qtd}");
-                Console.WriteLine($"| Preço: R${producties[i].Price.ToString("F2")}");
-                Console.WriteLine($"| Preço Total: R${producties[i].GetTotal().ToString("F2")}");
+                Console.WriteLine($"| Nome: {Producties[i].Name}");
+                Console.WriteLine($"| Quatidade: {Producties[i].Qtd}");
+                Console.WriteLine($"| Preço: R${Producties[i].Price.ToString("F2")}");
+                Console.WriteLine($"| Preço Total: R${Producties[i].Total.ToString("F2")}");
 
             }
 
             if (!simplified) {
                 Console.WriteLine("===================================================");
-                Console.WriteLine($"| Valor Total: R${TotalPrice().ToString("F2")}");
+                Console.WriteLine($"| Valor Total: R${Total.ToString("F2")}");
                 Console.WriteLine("===================================================");
                 Console.WriteLine("| Aperte enter para voltar.");
                 Console.ReadLine();
@@ -56,23 +80,6 @@ namespace Programm
             {
                 Console.WriteLine("===================================================");
             }
-        }
-
-        public double TotalPrice()
-        {
-            double total = 0;
-
-            for (int i = 0; i < producties.Count(); i++)
-            {
-                total += producties[i].GetTotal();
-            }
-
-            return total;
-        }
-
-        public int Length()
-        {
-            return producties.Count();
         }
     }
 }

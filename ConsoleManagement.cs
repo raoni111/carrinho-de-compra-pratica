@@ -2,7 +2,7 @@
 {
     class ConsoleManagement
     {
-        public ProductiesManagement ProductiesManagement;        
+        private ProductiesManagement ProductiesManagement;        
 
         public ConsoleManagement(ProductiesManagement productiesManagement)
         {
@@ -17,7 +17,7 @@
                 Console.WriteLine("===================================================");
                 Console.WriteLine("|               Carrinho de compras                ");
                 Console.WriteLine("===================================================");
-                Console.WriteLine($"| Produtos: {ProductiesManagement.Length()}");
+                Console.WriteLine($"| Produtos: {ProductiesManagement.Length}");
                 Console.WriteLine("|--------------------------------------------------");
                 Console.WriteLine("| Opções:                                          ");
                 Console.WriteLine("| [1] Adicionar Produto                            ");
@@ -56,7 +56,7 @@
                 Console.WriteLine("|             Remover item do carrinho             ");
                 Console.WriteLine("===================================================");
 
-                if (ProductiesManagement.Length() == 0)
+                if (ProductiesManagement.Length == 0)
                 {
                     break;
                 }
@@ -77,7 +77,7 @@
 
                 success = ProductiesManagement.RemoveProduct(index - 1);
 
-                if (ProductiesManagement.Length() == 0)
+                if (ProductiesManagement.Length == 0)
                 {
                     break;
                 }
@@ -176,7 +176,7 @@
                     AddProduct();
                     return;
                 case 2:
-                    if (ProductiesManagement.Length() == 0)
+                    if (ProductiesManagement.Length == 0)
                     {
                         return;
                     }
